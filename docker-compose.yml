@@ -1,5 +1,17 @@
 version: '3'
 services:
+  recipe-book-datastore:
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db
+    ports:
+      - "5436:5432"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./datastore/migrations/create-tables.sql:/docker-entrypoint-initdb.d/create-tables.sql
+
   recipe-book-api:
     build:
       context: ./api
@@ -9,6 +21,9 @@ services:
     volumes:
        - ./api:/usr/src/app/api
        - /usr/src/app/api/node_modules
+    depends_on:
+      - recipe-book-datastore
+
   recipe-book-ui:
     build:
       context: ./ui
@@ -19,5 +34,7 @@ services:
     volumes:
        - ./ui:/usr/src/app/ui
        - /usr/src/app/ui/node_modules
+    depends_on:
+      - recipe-book-api
 
 ######## Other containers #########
