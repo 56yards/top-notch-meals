@@ -1,6 +1,7 @@
 import { json, urlencoded } from 'body-parser';
 import cors from 'cors';
-import express, { Request, Response } from 'express';
+import express from 'express';
+import RecipeController from './controllers/recipes';
 
 const app = express();
 
@@ -8,6 +9,7 @@ export default class Application {
   constructor() {
     Application.setupApplicationSettings();
     Application.setupControllers();
+    Application.listen();
   }
 
   static setupApplicationSettings() {
@@ -16,27 +18,17 @@ export default class Application {
     app.use(json());
   }
 
+  static setupControllers() {
+    app.get('/recipes', RecipeController.handleGet);
+    app.get('/recipes/:id', RecipeController.handleNew);
+  }
+
   static listen() {
     app.listen(3080, () => {
       // eslint-disable-next-line no-console
       console.log('Listening on port 3080');
     });
   }
-
-  static setupControllers() {
-    app.get('/recipes', (req: Request, res: Response) => {
-      res.status(200).send('');
-    });
-    app.get('/recipes/:id', (req: Request, res: Response) => {
-      res.status(200).send('');
-    });
-    app.post('/recipes', (req: Request, res: Response) => {
-      res.status(200).send('');
-    });
-    app.delete('/recipes/:id', (req: Request, res: Response) => {
-      res.status(200).send('');
-    });
-  }
 }
 
-Application.listen();
+const application = Application();
