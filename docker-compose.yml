@@ -2,12 +2,13 @@ version: '3'
 services:
   recipe-book-datastore:
     image: postgres
+    restart: always
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
       POSTGRES_DB: db
     ports:
-      - "5436:5432"
+      - "5432:5432"
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
       - ./datastore/migrations/create-tables.sql:/docker-entrypoint-initdb.d/create-tables.sql
@@ -15,6 +16,12 @@ services:
   recipe-book-api:
     build:
       context: ./api
+    environment:
+      DATABASE_USER: user
+      DATABASE_PASSWORD: pass
+      DATABASE_NAME: db
+      DATABASE_PORT: 5432
+      DATABASE_HOST: recipe-book-datastore
     ports:
       - "3080:3080"
     container_name: recipe-book-api
