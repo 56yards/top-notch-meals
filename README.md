@@ -17,6 +17,18 @@ make install docker
 
 _Navigate to http://localhost:3000 to view the UI_
 
+## How to run api linting
+
+```
+make lint
+```
+
+## How to run api tests
+
+```
+make unit-test
+```
+
 ## How to run the tests
 
 Run the following command in a separate terminal (You must have your UI and API running)
