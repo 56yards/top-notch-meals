@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1000,
+        "name": "Lazy Lasagne",
+        "ingredients": "6 Lasange sheets \n 500g Minced Meat \n 1 Onion \n ...",
+        "method": "1. Fry the Onion \n 2. Add the minced meat and cook thorougly \n ..."
+    },
+    {
+        "id": 1001,
+        "name": "Homemade Pizza ",
+        "ingredients": "200g Flour \n 4 Tbsp Tomato Puree \n 200g Mild Cheese \n ...",
+        "method": "1. Mix the Flour \n 2. Add Tomate Puree and Sprinkle the Cheese on top \n ..."
+    },
+    {
+        "id": 1002,
+        "name": "Lamba Balti ",
+        "ingredients": "300g Lamb \n Balti Sauce \n 1 Onion \n 1 Bay Leaf \n ...",
+        "method": "1. Fry the Lamb \n 2. Add all the ingredients toegther and bring to a boil \n ..."
+    }
+]
