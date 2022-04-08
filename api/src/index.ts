@@ -19,8 +19,9 @@ export default class Application {
   }
 
   static setupControllers() {
-    app.get('/recipes', RecipeController.handleGet);
-    app.get('/recipes/:id', RecipeController.handleNew);
+    app.post('/recipes', RecipeController.handleCreate);
+    app.get('/recipes/:id', RecipeController.handleGet);
+    app.get('/recipes', RecipeController.handleAll);
   }
 
   static listen() {
@@ -31,4 +32,5 @@ export default class Application {
   }
 }
 
-const application = Application();
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const application = new Application();
